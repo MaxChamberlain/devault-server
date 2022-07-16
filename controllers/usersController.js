@@ -108,5 +108,36 @@ const authUser = async (req, res, next) => {
     }
 }
 
+const getUsers = async (req, res, next) => {
+    try{
+        const { company_code } = req.body
+        const users = await User.find({ company_code })
+        res.status(201).json(users)
+    }catch(e){
+        res.status(400).json({text: 'An Error Has Occurred. (Error Code: Jester)'})
+    }
+}
 
-module.exports = { registerUser, authUser };
+const makeAdmin = async (req, res, next) => {
+    try{
+        const { user_id, isAdmin } = req.body
+        const user = await User.updateOne({ _id: user_id }, { isAdmin })
+        console.log(user)
+        res.sendStatus(201)
+    }catch(e){
+        res.status(400).json({text: 'An Error Has Occurred. (Error Code: Dripstone)'})
+    }
+}
+
+const getUserPermissions = async (req, res, next) => {
+    try{
+        const { _id } = req.body
+        const user = await User.findOne({ _id })
+        res.status(201).json(user.isAdmin)
+    }catch(e){
+        res.status(400).json({text: 'An Error Has Occurred. (Error Code: Faux)'})
+    }
+}
+
+
+module.exports = { registerUser, authUser, getUsers, makeAdmin, getUserPermissions };
