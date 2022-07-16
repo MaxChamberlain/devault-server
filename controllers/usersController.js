@@ -1,4 +1,5 @@
 const User = require('../models/usersModel')
+const Company = require('../models/teamModel')
 const generateToken = require('../utils/generateToken')
 
 // create an async function names registerUser that takes req, res, and next as parameters
@@ -8,7 +9,7 @@ const generateToken = require('../utils/generateToken')
 // if an error occurs, call next with the error
 async function registerUser(req, res, next) {
     try {
-        const { company_code_input, password, email, name } = req.body
+        const { company_code_input, password, email, name, company_name } = req.body
 
         if(!email.includes('@') && !email.includes('.')){
             return res.status(400).json({
@@ -57,6 +58,19 @@ async function registerUser(req, res, next) {
             company_code,
             isApproved: company_code_input ? false : true
         })
+        if(!company_code_input){
+            try{
+                await Company.create({
+                    company_code,
+                    company_admin: user._id,
+                    company_name
+                })
+            }catch(e){
+                console.log(e)
+                User.deleteOne({ _id: user._id })
+                return res.status(501)
+            }
+        }
         res.status(201).json({
             _id: user._id,
             email: user.email, 
@@ -66,6 +80,7 @@ async function registerUser(req, res, next) {
             token: generateToken(user._id)
         })
     } catch (err) {
+        console.log(err)
         next(err)
     }
 }
