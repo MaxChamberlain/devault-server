@@ -68,4 +68,85 @@ async function insertOne(req, res) {
     }
  }
 
-module.exports = { insertOne, getAll };
+ async function checkIn(req, res) {
+    let mongoClient
+    try{
+        const { serial, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const devices = await collection.updateOne({ serial }, {$set: {checked_out: false, requested: false, owner: null}});
+
+        res.status(201).json(devices)
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+ async function checkOut(req, res) {
+    let mongoClient
+    try{
+        const { serial, owner, company_code } = req.body
+
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const devices = await collection.updateOne({ serial }, {$set: {checked_out: true, owner: owner}});
+
+        res.status(201).json(devices)
+    }catch(e){
+        console.log(e)
+        awaitres.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+ async function repair(req, res) {
+    let mongoClient
+    try{
+        const { serial, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const devices = await collection.updateOne({ serial }, {$set: {damaged: false, damage_description: null}});
+
+        res.status(201).json(devices)
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+ async function request(req, res) {
+    let mongoClient
+    try{
+        const { serial, owner, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const devices = await collection.updateOne({ serial }, {$set: {owner: owner, requested: true}});
+
+        res.status(201).json(devices)
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+module.exports = { insertOne, getAll, checkIn, checkOut, repair, request };
