@@ -1,4 +1,5 @@
 const connectToMongo = require('./connectToMongo');
+const mongodb = require('mongodb');
 
 async function insertOne(req, res) {
     let mongoClient
@@ -149,4 +150,26 @@ async function insertOne(req, res) {
     }
  }
 
-module.exports = { insertOne, getAll, checkIn, checkOut, repair, request };
+ async function deleteItem(req, res) {
+    let mongoClient
+    try{
+        const { _id, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        console.log(new mongodb.ObjectID(_id))
+
+        const devices = await collection.deleteOne({ _id: new mongodb.ObjectID(_id) });
+
+        res.status(201).json(devices)
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem };
