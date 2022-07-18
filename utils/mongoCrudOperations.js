@@ -172,4 +172,24 @@ async function insertOne(req, res) {
     }
  }
 
-module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem };
+ async function changeCategory(req, res) {
+    let mongoClient
+    try{
+        const { _id, category, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const devices = await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$set: {category: category}});
+
+        res.status(201).json(devices)
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory };
