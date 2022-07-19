@@ -252,4 +252,24 @@ async function insertOne(req, res) {
     }
  }
 
-module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag, makeDamaged };
+ async function reserve(req, res) {
+    let mongoClient
+    try{
+        const { _id, owner, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const data = await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$set: { reserved: true, owner: owner }});
+
+        res.status(201).json({message: 'Status Changed.'})
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error changing status!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag, makeDamaged, reserve };
