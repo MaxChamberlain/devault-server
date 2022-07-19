@@ -78,7 +78,7 @@ async function insertOne(req, res) {
         const db = mongoClient.db('devault');
         const collection = db.collection('DEVICES-' + company_code);
 
-        const devices = await collection.updateOne({ serial }, {$set: {checked_out: false, requested: false, owner: null}});
+        const devices = await collection.updateOne({ serial }, {$set: {checked_out: false, requested: false, reserved: false, owner: null}});
 
         res.status(201).json({message: 'Checked In!!'})
     }catch(e){
