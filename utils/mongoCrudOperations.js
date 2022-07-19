@@ -192,4 +192,46 @@ async function insertOne(req, res) {
     }
  }
 
-module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory };
+ async function removeTag(req, res) {
+    let mongoClient
+    try{
+        const { _id, tag, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$pull: {options: tag}});
+
+        res.status(201).json({message: 'done'})
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+ async function addTag(req, res) {
+    let mongoClient
+    try{
+        const { _id, tag, company_code } = req.body
+
+        console.log(_id, tag, company_code)
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const data = await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$push: {options: tag}});
+
+        res.status(201).json({message: 'done'})
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error finding!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag };
