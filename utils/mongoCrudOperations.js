@@ -80,7 +80,7 @@ async function insertOne(req, res) {
 
         const devices = await collection.updateOne({ serial }, {$set: {checked_out: false, requested: false, owner: null}});
 
-        res.status(201).json(devices)
+        res.status(201).json({message: 'Checked In!!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -101,7 +101,7 @@ async function insertOne(req, res) {
 
         const devices = await collection.updateOne({ serial }, {$set: {checked_out: true, owner: owner}});
 
-        res.status(201).json(devices)
+        res.status(201).json({message: 'Checked Out!'})
     }catch(e){
         console.log(e)
         awaitres.status(400).json({ error: 'Error finding!' })
@@ -121,7 +121,7 @@ async function insertOne(req, res) {
 
         const devices = await collection.updateOne({ serial }, {$set: {damaged: false, damage_description: null}});
 
-        res.status(201).json(devices)
+        res.status(201).json({message: 'Status Changed!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -141,7 +141,7 @@ async function insertOne(req, res) {
 
         const devices = await collection.updateOne({ serial }, {$set: {owner: owner, requested: true}});
 
-        res.status(201).json(devices)
+        res.status(201).json({message: 'Device Requested!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -163,7 +163,7 @@ async function insertOne(req, res) {
 
         const devices = await collection.deleteOne({ _id: new mongodb.ObjectID(_id) });
 
-        res.status(201).json(devices)
+        res.status(201).json({message: 'Device Removed!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -183,7 +183,7 @@ async function insertOne(req, res) {
 
         const devices = await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$set: {category: category}});
 
-        res.status(201).json(devices)
+        res.status(201).json({message: 'Category Changed!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -203,7 +203,7 @@ async function insertOne(req, res) {
 
         await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$pull: {options: tag}});
 
-        res.status(201).json({message: 'done'})
+        res.status(201).json({message: 'Tag Removed!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -217,15 +217,13 @@ async function insertOne(req, res) {
     try{
         const { _id, tag, company_code } = req.body
 
-        console.log(_id, tag, company_code)
-
         mongoClient = await connectToMongo();
         const db = mongoClient.db('devault');
         const collection = db.collection('DEVICES-' + company_code);
 
         const data = await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$push: {options: tag}});
 
-        res.status(201).json({message: 'done'})
+        res.status(201).json({message: 'Tag Added!'})
     }catch(e){
         console.log(e)
         res.status(400).json({ error: 'Error finding!' })
@@ -234,4 +232,24 @@ async function insertOne(req, res) {
     }
  }
 
-module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag };
+ async function makeDamaged(req, res) {
+    let mongoClient
+    try{
+        const { _id, damage_description, company_code } = req.body
+
+        mongoClient = await connectToMongo();
+        const db = mongoClient.db('devault');
+        const collection = db.collection('DEVICES-' + company_code);
+
+        const data = await collection.updateOne({ _id: new mongodb.ObjectID(_id) }, {$set: { damaged: true, damage_description: damage_description }});
+
+        res.status(201).json({message: 'Status Changed.'})
+    }catch(e){
+        console.log(e)
+        res.status(400).json({ error: 'Error changing status!' })
+    }finally {
+        await mongoClient.close();
+    }
+ }
+
+module.exports = { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag, makeDamaged };

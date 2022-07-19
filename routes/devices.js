@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag } = require('../utils/mongoCrudOperations');
+const { insertOne, getAll, checkIn, checkOut, repair, request, deleteItem, changeCategory, addTag, removeTag, makeDamaged } = require('../utils/mongoCrudOperations');
 
 router.post('/addone', insertOne)
 router.post('/getall', getAll)
@@ -13,7 +13,7 @@ router.post('/delete', deleteItem)
 router.post('/changecategory', changeCategory)
 router.post('/addtag', addTag)
 router.post('/removetag', removeTag)
-
+router.post('/damaged', makeDamaged)
 
 
 module.exports = router;
