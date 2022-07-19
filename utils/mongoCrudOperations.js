@@ -25,6 +25,10 @@ async function insertOne(req, res) {
         const db = mongoClient.db('devault');
         const collection = db.collection('DEVICES-' + company_code);
 
+        const check = await collection.findOne({ serial });
+
+        if (check) return res.status(400).json({ error: 'Device already exists!' });
+
         await collection.insertOne({
             make,
             model,
