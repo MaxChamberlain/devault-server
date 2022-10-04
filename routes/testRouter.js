@@ -4,7 +4,7 @@ const validateToken = require('../utils/validateToken');
 const testCrud = require('../utils/testCrud');
 
 router.post('/', validateToken)
-router.post('/testcrud', testCrud)
+// router.post('/testcrud', testCrud)
 
 
 
