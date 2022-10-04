@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const uri = 'mongodb+srv://admin:Administrator123@cluster0.q7rfn.mongodb.net/devault'
+const uri = 'mongodb+srv://admin:Administrator123@vidash.ckylswt.mongodb.net/devault?retryWrites=true&w=majority'
 
 async function connectToMongoCluster() {
     let mongoClient;
