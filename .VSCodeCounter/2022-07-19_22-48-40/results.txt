@@ -1,0 +1,95 @@
+Date : 2022-07-19 22:48:40
+Directory : /Users/maxchamberlain/Documents/GitHub/devault-app/src
+Total : 53 files,  3409 codes, 18 comments, 226 blanks, all 3653 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         48 |      3,177 |         14 |        192 |      3,383 |
+| CSS        |          4 |        231 |          4 |         34 |        269 |
+| XML        |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                    | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                       |         53 |      3,409 |         18 |        226 |      3,653 |
+| Components                                                                                              |         10 |        648 |          0 |         35 |        683 |
+| Components/Devices                                                                                      |          5 |        417 |          0 |         22 |        439 |
+| Components/Form                                                                                         |          3 |         89 |          0 |          9 |         98 |
+| Components/Header                                                                                       |          2 |        142 |          0 |          4 |        146 |
+| Hooks                                                                                                   |          2 |         97 |          1 |          6 |        104 |
+| Pages                                                                                                   |         31 |      2,343 |          6 |        125 |      2,474 |
+| Pages/Home                                                                                              |         20 |      1,046 |          1 |         51 |      1,098 |
+| Pages/Home/components                                                                                   |         19 |        962 |          1 |         46 |      1,009 |
+| Pages/Login                                                                                             |          2 |        110 |          4 |          9 |        123 |
+| Pages/Overview                                                                                          |          3 |        599 |          1 |         39 |        639 |
+| Pages/Overview/components                                                                               |          2 |        553 |          1 |         34 |        588 |
+| Pages/Register                                                                                          |          2 |        143 |          0 |         14 |        157 |
+| Pages/Splash                                                                                            |          3 |        287 |          0 |          4 |        291 |
+| Pages/Splash/components                                                                                 |          2 |         76 |          0 |          2 |         78 |
+| Pages/UserManager                                                                                       |          1 |        158 |          0 |          8 |        166 |
+| contexts                                                                                                |          2 |         56 |          0 |         12 |         68 |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/App.css                                          | CSS        |        139 |          1 |         25 |        165 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/App.js                                           | JavaScript |         79 |          0 |         14 |         93 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/App.test.js                                      | JavaScript |          7 |          0 |          2 |          9 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Devices/DeviceLabel.js                | JavaScript |         69 |          0 |          2 |         71 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Devices/DeviceModal.js                | JavaScript |        271 |          0 |         17 |        288 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Devices/DeviceModalHeader.js          | JavaScript |         22 |          0 |          0 |         22 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Devices/OpenArrow.js                  | JavaScript |         17 |          0 |          1 |         18 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Devices/SerialDisplay.js              | JavaScript |         38 |          0 |          2 |         40 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Form/CheckInput.js                    | JavaScript |         41 |          0 |          2 |         43 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Form/SubmitButton.js                  | JavaScript |         17 |          0 |          2 |         19 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Form/TextInput.js                     | JavaScript |         31 |          0 |          5 |         36 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Header/Header.js                      | JavaScript |         90 |          0 |          3 |         93 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Components/Header/SplashHeader.js                | JavaScript |         52 |          0 |          1 |         53 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Hooks/useCopy.js                                 | JavaScript |         10 |          0 |          3 |         13 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Hooks/useLoading.js                              | JavaScript |         87 |          1 |          3 |         91 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/Home.js                               | JavaScript |         84 |          0 |          5 |         89 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/AddButton.js               | JavaScript |         30 |          0 |          2 |         32 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/CategorySelect.js          | JavaScript |         46 |          0 |          2 |         48 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/CheckOutButton.js          | JavaScript |         19 |          0 |          0 |         19 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/CheckingOutModal.js        | JavaScript |         25 |          0 |          1 |         26 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/DamageDisplay.js           | JavaScript |         14 |          0 |          0 |         14 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/DamagedModal.js            | JavaScript |         24 |          0 |          1 |         25 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/DeviceDisplayDriver.js     | JavaScript |         56 |          1 |          3 |         60 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/DeviceInputForm.js         | JavaScript |         21 |          0 |          1 |         22 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/Filters.js                 | JavaScript |         67 |          0 |          1 |         68 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/Form.js                    | JavaScript |        120 |          0 |          7 |        127 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/MakeSelect.js              | JavaScript |         46 |          0 |          2 |         48 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/ModelSelect.js             | JavaScript |         46 |          0 |          2 |         48 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/MoreOptions.js             | JavaScript |        195 |          0 |         16 |        211 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/OptionsDisplay.js          | JavaScript |         88 |          0 |          1 |         89 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/OwnerSelect.js             | JavaScript |         46 |          0 |          2 |         48 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/Refresh.js                 | JavaScript |          8 |          0 |          1 |          9 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/ReservingModal.js          | JavaScript |         25 |          0 |          1 |         26 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/SearchBar.js               | JavaScript |         41 |          0 |          1 |         42 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Home/components/StatusSelect.js            | JavaScript |         45 |          0 |          2 |         47 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Login/Login.css                            | CSS        |         39 |          0 |          4 |         43 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Login/Login.js                             | JavaScript |         71 |          4 |          5 |         80 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Overview/Overview.js                       | JavaScript |         46 |          0 |          5 |         51 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Overview/components/DeviceDisplayDriver.js | JavaScript |        285 |          1 |         17 |        303 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Overview/components/DeviceModal.js         | JavaScript |        268 |          0 |         17 |        285 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Register/Register.css                      | CSS        |         43 |          0 |          4 |         47 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Register/Register.js                       | JavaScript |        100 |          0 |         10 |        110 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Splash/Splash.js                           | JavaScript |        211 |          0 |          2 |        213 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Splash/components/InfoCard.js              | JavaScript |         62 |          0 |          2 |         64 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/Splash/components/MainCard.js              | JavaScript |         14 |          0 |          0 |         14 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/Pages/UserManager/UserManager.js                 | JavaScript |        158 |          0 |          8 |        166 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/contexts/TeamContext.js                          | JavaScript |         28 |          0 |          6 |         34 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/contexts/UserContext.js                          | JavaScript |         28 |          0 |          6 |         34 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/index.css                                        | CSS        |         10 |          3 |          1 |         14 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/index.js                                         | JavaScript |         16 |          3 |          3 |         22 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/logo.svg                                         | XML        |          1 |          0 |          0 |          1 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/reportWebVitals.js                               | JavaScript |         12 |          0 |          2 |         14 |
+| /Users/maxchamberlain/Documents/GitHub/devault-app/src/setupTests.js                                    | JavaScript |          1 |          4 |          1 |          6 |
+| Total                                                                                                   |            |      3,409 |         18 |        226 |      3,653 |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
