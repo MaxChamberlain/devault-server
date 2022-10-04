@@ -88,9 +88,9 @@ async function registerUser(req, res, next) {
 const authUser = async (req, res, next) => {
     try{
         const { email, password } = req.body
-        console.log(await User.findOne({ email_address: email }))
     
-        const user = await User.findOne({ email_address: email })
+        const user = await User.findOne({ email })
+        console.log(await User.find())
     
         if(user && (await user.matchPassword(password))){
             res.status(201).json({
